@@ -1,0 +1,48 @@
+body {
+    margin: none;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    flex: 0 0 auto;
+}
+main {
+    flex: 1 1 auto;
+
+    .row:empty {
+        height: 40px;
+    }
+
+    .card {
+        overflow: hidden;
+        user-select: none;
+
+        .card-title, .card-text {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .stretched-link:hover {
+            cursor:pointer;
+        }
+
+        &.card-disabled {
+            .card-top, .card-body {
+                opacity: 0.6;
+            }
+        }
+        &.card-no-pointer {
+            &:hover a {
+                cursor: default;
+            }
+        }
+    }
+    
+
+}
+footer {
+    flex: 0 0 auto;
+}
