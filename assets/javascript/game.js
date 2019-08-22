@@ -34,7 +34,7 @@ function generateStarfighter(name, url, count) {
     let hp = parseInt(Math.random() * 99 + 1);
     let atk = parseInt(Math.random() * 14 + 1);
     let c_Atk = parseInt(Math.random() * 14 + 1);
-    let starfighter_element = $('<div class="col-12 col-sm-6 col-md-3 my-3">');
+    let starfighter_element = $('<div class="col-12 col-sm-6 col-md-3 mb-3">');
     let div_card = $('<div class="card h-100">');
     starfighter_element.append(div_card);
 
@@ -129,6 +129,10 @@ $(document).ready(function () {
 
             button_fight.addClass('btn-secondary');
             button_fight.addClass('button-no-pointer');
+
+            //reset region backgrounds
+            region_attacker.removeClass('bg-success');
+            region_defender.removeClass('bg-danger');
         }
     }
     //starfighter controller
@@ -169,6 +173,7 @@ $(document).ready(function () {
                     break;
             }
             player[0].find('.card').addClass('card-no-pointer');
+            region_player.addClass('bg-success');
             region_enemies.toggleClass('bg-danger');
             phase = phases[1];
             console.log(phase);
@@ -201,6 +206,9 @@ $(document).ready(function () {
             }
             moveStarfighter(player[0], region_attacker);
             region_enemies.toggleClass('bg-danger');
+            region_player.removeClass('bg-success');
+            region_attacker.addClass('bg-success');
+            region_defender.toggleClass('bg-danger');
 
             phase = phases[2];
 
@@ -287,7 +295,7 @@ $(document).ready(function () {
                     phase = phases[1];
                     console.log(phase);
                     region_enemies.toggleClass('bg-danger');
-
+                    region_defender.removeClass('bg-danger');
 
                     button_fight.find('i').text('pan_tool');
                     button_fight.find('b').text('STANDBY');
