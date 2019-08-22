@@ -22,10 +22,6 @@ main {
           flex: 1 1 auto;
 }
 
-main .row:empty {
-  height: 40px;
-}
-
 main .card {
   overflow: hidden;
   -webkit-user-select: none;
@@ -50,6 +46,15 @@ main .card.card-disabled .card-top, main .card.card-disabled .card-body {
 
 main .card.card-no-pointer:hover a {
   cursor: default;
+}
+
+main #button_fight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 footer {

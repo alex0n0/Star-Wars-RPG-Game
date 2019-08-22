@@ -11,9 +11,6 @@ header {
 main {
     flex: 1 1 auto;
 
-    .row:empty {
-        height: 40px;
-    }
 
     .card {
         overflow: hidden;
@@ -39,6 +36,11 @@ main {
                 cursor: default;
             }
         }
+    }
+
+    #button_fight {
+        display: flex;
+        align-items: center;
     }
     
 
