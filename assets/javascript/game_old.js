@@ -11,11 +11,7 @@ let tempWins;
 
 
 
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
-//used for generating starfighter elements
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
+
 
 //randomly generate HP, attack and counter attack
 //data for starfighters
@@ -96,12 +92,6 @@ $(document).ready(function () {
     let enemy;
 
 
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    //setup and reset UI for each round
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-
     resetGame();
     function resetGame() {
         phase = phases[0];
@@ -145,20 +135,49 @@ $(document).ready(function () {
             regionDefender.removeClass('bg-danger');
         }
     }
-
-
-
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    //controller for starfighter elements
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-
+    //starfighter controller
     function clickStarfighter(e) {
         if (phase === phases[0]) {
+            // switch (e.target.id) {
+            //     case arrayStarfighters[0][1].attr('id'):
+            //         moveStarfighter(arrayStarfighters[0][0], regionPlayer);
+            //         arrayStarfighters[0][1].unbind('click', clickStarfighter);
+            //         moveStarfighter(arrayStarfighters[1][0], regionEnemies);
+            //         moveStarfighter(arrayStarfighters[2][0], regionEnemies);
+            //         moveStarfighter(arrayStarfighters[3][0], regionEnemies);
+            //         player = arrayStarfighters[0];
+            //         break;
+            //     case arrayStarfighters[1][1].attr('id'):
+            //         moveStarfighter(arrayStarfighters[0][0], regionEnemies);
+            //         moveStarfighter(arrayStarfighters[1][0], regionPlayer);
+            //         arrayStarfighters[1][1].unbind('click', clickStarfighter);
+            //         moveStarfighter(arrayStarfighters[2][0], regionEnemies);
+            //         moveStarfighter(arrayStarfighters[3][0], regionEnemies);
+            //         player = arrayStarfighters[1];
+            //         break;
+            //     case arrayStarfighters[2][1].attr('id'):
+            //         moveStarfighter(arrayStarfighters[0][0], regionEnemies);
+            //         moveStarfighter(arrayStarfighters[1][0], regionEnemies);
+            //         moveStarfighter(arrayStarfighters[2][0], regionPlayer);
+            //         arrayStarfighters[2][1].unbind('click', clickStarfighter);
+            //         moveStarfighter(arrayStarfighters[3][0], regionEnemies);
+            //         player = arrayStarfighters[2];
+            //         break;
+            //     case arrayStarfighters[3][1].attr('id'):
+            //         moveStarfighter(arrayStarfighters[0][0], regionEnemies);
+            //         moveStarfighter(arrayStarfighters[1][0], regionEnemies);
+            //         moveStarfighter(arrayStarfighters[2][0], regionEnemies);
+            //         moveStarfighter(arrayStarfighters[3][0], regionPlayer);
+            //         arrayStarfighters[3][1].unbind('click', clickStarfighter);
+            //         player = arrayStarfighters[3];
+            //         break;
+            // }
+
+            //^ replace the above code
             weirdFunction1(e.target.id);
             function weirdFunction1(match) {
                 for (x of arrayStarfighters) {
+                    console.log(x);
                     if (x[1].attr('id') === match) {
                         moveStarfighter(x[0], regionPlayer);
                         x[1].unbind('click', clickStarfighter);
@@ -174,10 +193,34 @@ $(document).ready(function () {
             phase = phases[1];
             console.log(phase);
         } else if (phase === phases[1]) {
+            // switch (e.target.id) {
+            //     case arrayStarfighters[0][1].attr('id'):
+            //         moveStarfighter(arrayStarfighters[0][0], regionDefender);
+            //         arrayStarfighters[0][1].unbind('click', clickStarfighter);
+            //         enemy = arrayStarfighters[0];
+            //         break;
+            //     case arrayStarfighters[1][1].attr('id'):
+            //         moveStarfighter(arrayStarfighters[1][0], regionDefender);
+            //         arrayStarfighters[1][1].unbind('click', clickStarfighter);
+            //         enemy = arrayStarfighters[1];
+            //         break;
+            //     case arrayStarfighters[2][1].attr('id'):
+            //         moveStarfighter(arrayStarfighters[2][0], regionDefender);
+            //         arrayStarfighters[2][1].unbind('click', clickStarfighter);
+            //         enemy = arrayStarfighters[2];
+            //         break;
+            //     case arrayStarfighters[3][1].attr('id'):
+            //         moveStarfighter(arrayStarfighters[3][0], regionDefender);
+            //         arrayStarfighters[3][1].unbind('click', clickStarfighter);
+            //         enemy = arrayStarfighters[3];
+            //         break;
+            // }
 
+            //^ replace the above code
             weirdFunction2(e.target.id);
             function weirdFunction2(match) {
                 for (x of arrayStarfighters) {
+                    console.log(x);
                     if (x[1].attr('id') === match) {
                         moveStarfighter(x[0], regionDefender);
                         x[1].unbind('click', clickStarfighter);
@@ -213,20 +256,14 @@ $(document).ready(function () {
 
 
 
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    //controller for fight button actions
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
+
+    //buttonFight controller
 
     function clickFight() {
-        //end game state
         if (phase === phases[3]) {
             console.groupEnd();
             resetGame();
-        } 
-        //non-end game state
-        else {
+        } else {
             console.log(phase);
             //adjust HP and increase attack
             player[2].decreaseHP(enemy[2].getCAtk());
@@ -238,7 +275,6 @@ $(document).ready(function () {
                 buttonFight.unbind('click', clickFight);
             }
 
-            //disabled enemy if their HP reaches zero
             if (enemy[2].getHP() <= 0) {
                 enemy[2].setHP(0);
                 enemy[0].find('.card').toggleClass('card-disabled');
