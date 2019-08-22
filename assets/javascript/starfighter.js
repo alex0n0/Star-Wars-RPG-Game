@@ -1,21 +1,29 @@
 class Starfighter {
-    constructor(hp, atk, c_Atk) {
+    constructor(hp, atk, cAtk) {
         this.baseHP = hp;
         this.hp = this.baseHP;
         this.baseAtk = atk;
         this.atk = this.baseAtk;
-        this.c_Atk = c_Atk;
+        this.cAtk = cAtk;
     }
 
-
-    getHP() {
-        return this.hp;
-    }
+    
     getBaseHP() {
         return this.baseHP;
     }
+    getHP() {
+        return this.hp;
+    }
+    setHP(x) {
+        this.hp = x;
+    }
+
     getAtk() {
         return this.atk;
+    }
+
+    getCAtk() {
+        return this.cAtk;
     }
 
 

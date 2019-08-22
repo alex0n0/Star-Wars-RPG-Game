@@ -33,7 +33,7 @@ for (x of arrayData) {
 function generateStarfighter(name, url, count) {
     let hp = parseInt(Math.random() * 99 + 1);
     let atk = parseInt(Math.random() * 14 + 1);
-    let c_Atk = parseInt(Math.random() * 14 + 1);
+    let cAtk = parseInt(Math.random() * 14 + 1);
     let starfighter_element = $('<div class="col-12 col-sm-6 col-md-3 mb-3">');
     let div_card = $('<div class="card h-100">');
     starfighter_element.append(div_card);
@@ -48,13 +48,13 @@ function generateStarfighter(name, url, count) {
     div_card_body.append($(`<h6 class="card-title">${name}</h6>`));
     div_card_body.append($(`<p class="card-text my-0 starfighter-hp">HP: ${hp}/${hp}</p>`));
     div_card_body.append($(`<p class="card-text my-0 starfighter-atk">ATK: ${atk}</p>`));
-    div_card_body.append($(`<p class="card-text my-0 starfighter-c-atk">C-ATK: ${c_Atk}</p>`));
+    div_card_body.append($(`<p class="card-text my-0 starfighter-c-atk">C-ATK: ${cAtk}</p>`));
 
     let a_link = $(`<a id="starfighter_${count}" class="stretched-link"></a>`);
     div_card_body.append(a_link);
 
 
-    return [starfighter_element, a_link, new Starfighter(hp, atk, c_Atk)];
+    return [starfighter_element, a_link, new Starfighter(hp, atk, cAtk)];
 }
 
 
@@ -237,22 +237,22 @@ $(document).ready(function () {
         } else {
             console.log(phase);
             //adjust HP and increase attack
-            player[2].decreaseHP(enemy[2].c_Atk);
-            enemy[2].hp -= player[2].atk;
+            player[2].decreaseHP(enemy[2].getCAtk());
+            enemy[2].decreaseHP(player[2].getAtk());
             player[2].increaseAtk();
 
 
-            if (player[2].hp <= 0 || enemy[2].hp <= 0) {
+            if (player[2].getHP() <= 0 || enemy[2].getHP() <= 0) {
                 button_fight.unbind('click', clickFight);
             }
 
-            if (enemy[2].hp <= 0) {
-                enemy[2].hp = 0;
+            if (enemy[2].getHP() <= 0) {
+                enemy[2].setHP(0);
                 enemy[0].find('.card').toggleClass('card-disabled');
             }
 
-            if (player[2].hp <= 0) {
-                player[2].hp = 0;
+            if (player[2].getHP() <= 0) {
+                player[2].setHP(0);
                 player[0].find('.card').toggleClass('card-disabled');
 
                 //temp win/loss controller
@@ -270,7 +270,7 @@ $(document).ready(function () {
                 phase = phases[3];
                 button_fight.on('click', clickFight);
 
-            } else if (enemy[2].hp <= 0) {
+            } else if (enemy[2].getHP() <= 0) {
                 //temp win/loss controller
                 temp_wins++;
                 console.log(`beat ${temp_wins} enem${temp_wins == 1 ? 'y' : 'ies'}`);
