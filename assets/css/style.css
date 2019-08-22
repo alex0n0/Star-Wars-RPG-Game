@@ -8,6 +8,13 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  font-size: 12px;
+}
+
+@media only screen and (min-width: 576px) {
+  body {
+    font-size: 16px;
+  }
 }
 
 header {
@@ -46,6 +53,7 @@ main .card.card-disabled .card-top, main .card.card-disabled .card-body {
 
 main .card.card-no-pointer:hover a {
   cursor: default;
+  cursor: not-allowed;
 }
 
 main #button_fight {
@@ -55,6 +63,11 @@ main #button_fight {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+main #button_fight.button-no-pointer:hover {
+  cursor: default;
+  cursor: not-allowed;
 }
 
 footer {

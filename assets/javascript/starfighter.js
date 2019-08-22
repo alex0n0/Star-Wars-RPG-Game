@@ -1,7 +1,5 @@
 class Starfighter {
     constructor(hp, atk, c_Atk) {
-        this.isPlayer = false;
-        this.isAlive = true;
         this.baseHP = hp;
         this.hp = this.baseHP;
         this.baseAtk = atk;
@@ -9,25 +7,27 @@ class Starfighter {
         this.c_Atk = c_Atk;
     }
 
-    setPlayer(x) {
-        this.isPlayer = x;
+
+    getHP() {
+        return this.hp;
     }
-    setAlive(x) {
-        this.isAlive = x;
+    getBaseHP() {
+        return this.baseHP;
+    }
+    getAtk() {
+        return this.atk;
     }
 
 
-    increaseHP() {
-        this.hp += this.baseHP;
+    decreaseHP(x) {
+        this.hp -= x;
     }
     increaseAtk() {
         this.atk += this.baseAtk;
     }
-
     
+
     reset() {
-        this.isPlayer = false;
-        this.isAlive = true;
         this.hp = this.baseHP;
         this.atk = this.baseAtk;
     }

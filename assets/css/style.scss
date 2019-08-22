@@ -1,8 +1,20 @@
+$break-sm: 575px;
+
+@mixin break-sm {
+    @media only screen and (min-width: 576px) {
+        @content;
+    }
+}
 body {
     margin: none;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+
+    font-size: 12px;
+    @include break-sm {
+        font-size: 16px;
+    }
 }
 
 header {
@@ -34,6 +46,7 @@ main {
         &.card-no-pointer {
             &:hover a {
                 cursor: default;
+                cursor: not-allowed;
             }
         }
     }
@@ -41,6 +54,13 @@ main {
     #button_fight {
         display: flex;
         align-items: center;
+
+        &.button-no-pointer {
+            &:hover {
+                cursor: default;
+                cursor: not-allowed;
+            }
+        }
     }
     
 
