@@ -23,17 +23,31 @@ let arrayData = [
     ["X-Wing", "./assets/images/starfighter_x_wing.png"],
     ["Jedi Starfighter", "./assets/images/starfighter_jedi.png"],
     ["V-19 Torrent Starfighter", "./assets/images/starfighter_v_19torrent.png"],
-    ["TIE Fighter", "./assets/images/starfighter_tie.png"]
+    ["TIE Fighter", "./assets/images/starfighter_tie.png"],
+    ["Rogue-Class Starfighter", "./assets/images/starfighter_rogue_class.png"],
+    ["Z-95 Headhunter", "./assets/images/starfighter_z_95_headhunter.png"]
 ];
 
 let arrayStarfighters = [];
 
 //generate starfighters
+// let count = 0;
+//generate all starfighters
+// for (x of arrayData) {
+//     arrayStarfighters[arrayStarfighters.length] = generateStarfighter(x[0], x[1], count)
+//     count++;
+// }
+
+//choose number of starfighters
+let numberStarfighters = 6;
 let count = 0;
-for (x of arrayData) {
-    arrayStarfighters[arrayStarfighters.length] = generateStarfighter(x[0], x[1], count)
+//randomly choose which starfighters to generate
+for (let i = 0; i < numberStarfighters; i++) {
+    let index = Math.round((Math.random() * (arrayData.length - 1)));
+    arrayStarfighters[arrayStarfighters.length] = generateStarfighter(arrayData[index][0], arrayData[index][1], count)
     count++;
 }
+
 function generateStarfighter(name, url, count) {
     let hp = parseInt(Math.random() * 99 + 1);
     let atk = parseInt(Math.random() * 14 + 1);
@@ -269,7 +283,7 @@ $(document).ready(function () {
                 console.log(`beat ${tempWins} enem${tempWins == 1 ? 'y' : 'ies'}`);
 
                 //round_controller
-                if (tempWins === 3) {
+                if (tempWins === arrayStarfighters.length - 1) {
                     console.log('round won');
 
                     roundWins++;
@@ -325,7 +339,7 @@ $(document).ready(function () {
 //utility function
 function moveStarfighter(starfighter, region) {
     //NOTE: all event listeners are removed with remove()
-    //NOTE: detach maintains click events
+    //NOTE: detach retains click events
     starfighter.detach();
     region.append(starfighter);
 }
@@ -335,8 +349,8 @@ function moveStarfighter(starfighter, region) {
 
 
 ///NOTES
-// console.log($('#button_fight')); <- returns an array
+// console.log($('#button_fight')); <- jquery selections return an array
     // console.log(arrayStarfighters[0][1]); <- this is also identified with jQuery
-// console.log((arrayStarfighters[0][1])[0].id); <- can access values this way
-    // console.log(arrayStarfighters[0][1][0].id); <- or this way
-// console.log($('#button_fight').attr('id')); <- this is the ideal way for using jQuery identifed elements
+        // console.log((arrayStarfighters[0][1])[0].id); <- can access attributes like this
+        // console.log(arrayStarfighters[0][1][0].id); <- or this way
+// console.log($('#button_fight').attr('id')); <- this is a better way for accessing attributes on jQuery selected elements
