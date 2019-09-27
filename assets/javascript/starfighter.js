@@ -1,10 +1,10 @@
 class Starfighter {
-    constructor(hp, atk, cAtk) {
+    constructor(hp, atk, counterAtk) {
         this.baseHP = hp;
         this.hp = this.baseHP;
         this.baseAtk = atk;
         this.atk = this.baseAtk;
-        this.cAtk = cAtk;
+        this.counterAtk = counterAtk;
     }
 
     
@@ -22,8 +22,8 @@ class Starfighter {
         return this.atk;
     }
 
-    getCAtk() {
-        return this.cAtk;
+    getcounterAtk() {
+        return this.counterAtk;
     }
 
 
@@ -35,7 +35,7 @@ class Starfighter {
     }
     
 
-    reset() {
+    resetStats() {
         this.hp = this.baseHP;
         this.atk = this.baseAtk;
     }

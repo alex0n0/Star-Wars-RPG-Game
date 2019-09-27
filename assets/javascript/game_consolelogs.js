@@ -68,10 +68,22 @@ function generateStarfighterObj(name, url, id) {
     return {
         element: starfighterElement,
         link: aLink,
-        // return the starfighter object to maintain data on hp, atk, counterAtk so long as the browser is not refreshed
         obj: new Starfighter(hp, atk, counterAtk)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 $(document).ready(function () {
     $('#p_wins').text(`Wins: ${overallWins}`);
@@ -80,32 +92,15 @@ $(document).ready(function () {
     resetGame();
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ############################################################
     - function to reset & setup UI for each round    
 ############################################################ */
 function resetGame() {
     phase = phases[0];
-
+    /////////////////////// DEV (checking game state changes) >>>
+    console.group('round');
+    console.log(phase);
+    /////////////////////// <<< DEV (checking game state changes)
     tempPlayer = undefined;
     tempEnemy = undefined
     tempRoundWins = 0;
@@ -187,6 +182,9 @@ function starfighterControllerFunction(e) {
         $('#region_player').addClass('bg-success');
         $('#region_enemies').addClass('bg-danger');
         phase = phases[1];
+        /////////////////////// DEV (checking game state changes) >>>
+        console.log(phase);
+        /////////////////////// <<< DEV (checking game state changes)
     }
     // in the select_enemy phase 
     else if (phase === phases[1]) {
@@ -246,6 +244,10 @@ function starfighterControllerFunction(e) {
 function battleControllerFunction() {
     // If catches game events if the game phase is not 'game_end'
     if (phase !== phases[3]) {
+        /////////////////////// DEV (checking game state changes) >>>
+        console.log(phase);
+        /////////////////////// <<< DEV (checking game state changes)
+
         // Adjust HP and increase attack
         tempPlayer.obj.decreaseHP(tempEnemy.obj.getcounterAtk());
         tempEnemy.obj.decreaseHP(tempPlayer.obj.getAtk());
@@ -290,14 +292,24 @@ function battleControllerFunction() {
             $('#button_fight').toggleClass('btn-danger');
             $('#button_fight').on('click', battleControllerFunction);
 
+            /////////////////////// DEV (checking game state changes) >>>
+            console.log(`beat ${tempRoundWins} enem${tempRoundWins == 1 ? 'y' : 'ies'}`);
+            console.log('round lost');
+            /////////////////////// <<< DEV (checking game state changes)
         } else if (tempEnemy.obj.getHP() <= 0) {
+            /////////////////////// DEV (checking game state changes) >>>
             tempRoundWins++;
+            console.log(`beat ${tempRoundWins} enem${tempRoundWins == 1 ? 'y' : 'ies'}`);
+            /////////////////////// <<< DEV (checking game state changes)
 
             // Round controller. Suppose there are 6 enemies, player needs to beat 5 opponents (tempRoundWins = 5) to win the game
             // If block catches defeating an enemy THAT IS NOT THE LAST ENEMY
             if (tempRoundWins !== tempArrayStarfightersObjs.length - 1) {
                 moveStarfighter(tempEnemy.element, $('#region_enemies'));
                 phase = phases[1];
+                /////////////////////// DEV (checking game state changes) >>>
+                console.log(phase);
+                /////////////////////// <<< DEV (checking game state changes)
                 $('#region_enemies').removeClass('bg-danger');
                 $('#region_defender').removeClass('bg-danger');
 
@@ -317,6 +329,10 @@ function battleControllerFunction() {
             }
             // Else block catches when all enemies being defeated
             else {
+                /////////////////////// DEV (checking game state changes) >>>
+                console.log('round won');
+                /////////////////////// <<< DEV (checking game state changes)
+
                 // Update wins
                 overallWins++;
                 $('#p_wins').text(`Wins: ${overallWins}`);
@@ -329,11 +345,15 @@ function battleControllerFunction() {
                 //game end action
                 phase = phases[3];
                 $('#button_fight').on('click', battleControllerFunction);
+
             }
         }
     }
     // Else block catches game events when game phase 'game_end'
     else {
+        /////////////////////// DEV (checking game state changes) >>>
+        console.groupEnd();
+        /////////////////////// <<< DEV (checking game state changes)
         resetGame();
     }
 
