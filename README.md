@@ -1,7 +1,18 @@
 # Star Wars RPG Game
 
-A ~~thrilling~~ simple battle between starfighters
+This source code for a browser based RPG game inspired by Star Wars.
 
-## Getting Started
+It features randomisation of players/enemies and their stats
 
-Just clone the repo :neutral_face:
+## Setup
+This project uses plain html and javascript so no additional proficiencies are needed.
+
+Styling is done via Sass.
+
+Here is a link to a live [demo](https://alex0n0.github.io/Star-Wars-RPG-Game/).
+
+## Contributing
+Feel free to fork and create your own improvements. Contributions are also welcome.
+
+## Licence
+See LICENSE file
