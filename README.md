@@ -1,18 +1,31 @@
-# Star Wars RPG Game
+# Star-Wars-RPG-Game
 
-This source code for a browser based RPG game inspired by Star Wars.
+App is “one vs all”–style browser based game.
 
-It features randomisation of players/enemies and their stats
+[Click here](https://alex0n0.github.io/Star-Wars-RPG-Game/) for an interactive demo.
 
-## Setup
-This project uses plain html and javascript so no additional proficiencies are needed.
+![screenshot 1](/public/screenshot_1.png)
 
-Styling is done via Sass.
+## Features
 
-Here is a link to a live [demo](https://alex0n0.github.io/Star-Wars-RPG-Game/).
+- Randomised player images and stats
+- Updated player stats with each turn
+- Semantically coloured zones and disabled buttons depending on game phase
 
-## Contributing
-Feel free to fork and create your own improvements. Contributions are also welcome.
+## Getting Started
 
-## Licence
-See LICENSE file
+Begin by cloning the [Star-Wars-RPG-Game](https://github.com/alex0n0/Star-Wars-RPG-Game) repository and install dependencies:
+
+```terminal
+git clone https://github.com/Star-Wars-RPG-Game/OrderAway.git
+npm install
+```
+
+## Built With
+
+- Plain HTML, JS
+- SCSS
+
+## License
+
+This project is licensed under the terms of the [MIT](https://github.com/alex0n0/Star-Wars-RPG-Game/blob/master/LICENSE) license.
