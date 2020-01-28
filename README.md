@@ -1,6 +1,6 @@
 # Star-Wars-RPG-Game
 
-App is “one vs all”–style browser based game.
+App is “one vs all”–style browser based game themed around Star Wars.
 
 [Click here](https://alex0n0.github.io/Star-Wars-RPG-Game/) for an interactive demo.
 
